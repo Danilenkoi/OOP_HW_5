@@ -4,7 +4,7 @@ public class Bus extends Transport<DriverD> {
 
     private BusEnum busEnum;
 
-    public Bus (String brand, String model, double engineVolume, DriverD driver){
+    public Bus (String brand, String model, double engineVolume, DriverD driver, BusEnum busEnum){
         super(brand, model, engineVolume, driver);
         this.busEnum = busEnum;
     }

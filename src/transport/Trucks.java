@@ -4,7 +4,7 @@ public class Trucks extends Transport<DriverC> {
 
     private TrucksEnum trucksEnum;
 
-    public Trucks (String brand, String model, double engineVolume, DriverC driver) {
+    public Trucks (String brand, String model, double engineVolume, DriverC driver, TrucksEnum trucksEnum) {
         super(brand, model, engineVolume, driver);
         this.trucksEnum = trucksEnum;
     }
