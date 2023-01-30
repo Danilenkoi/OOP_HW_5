@@ -2,9 +2,11 @@ package transport;
 import transport.TrucksEnum;
 public class Trucks extends Transport<DriverC> {
 
-    static TrucksEnum trucksEnum;
+    private TrucksEnum trucksEnum;
+
     public Trucks (String brand, String model, double engineVolume, DriverC driver) {
         super(brand, model, engineVolume, driver);
+        this.trucksEnum = trucksEnum;
     }
 
     @Override

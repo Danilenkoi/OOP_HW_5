@@ -1,7 +1,10 @@
 import transport.*;
-import transport.enum.CarEnum;
-import transport.enum.BusEnum;
-import transport.enum.TrucksEnum;
+import transport.CarEnum;
+import transport.BusEnum;
+import transport.TrucksEnum;
+import transport.Car;
+import transport.Bus;
+import transport.Trucks;
 public class Main {
     public static void main(String[] args) {
 
@@ -22,13 +25,14 @@ public class Main {
 
             lancia.printType();
             System.out.println(lancia);
-            lancia.setBody(BodyType.HATCHBACK);
-            kamaz.setLoadCapacity(TrucksEnum.N3);
-            ikarus.setPassengerCapacity(BusEnum.SMALL);
+            lancia.setCarEnum(CarEnum.HATCHBACK);
+            kamaz.setTrucksEnum(TrucksEnum.N3);
+            ikarus.setBusEnum(BusEnum.SMALL);
             lancia.printType();
             kamaz.printType();
             System.out.println(kamaz);
             ikarus.printType();
+
         }
     }
     private static void printInfo (Transport<?> transport){

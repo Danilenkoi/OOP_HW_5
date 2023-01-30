@@ -1,10 +1,12 @@
 package transport;
-import transport.CarEnum;
+
 public class Car extends Transport<DriverB> {
 
-    static CarEnum carEnum;
+    private CarEnum carEnum;
+
     public Car (String brand, String model, double engineVolume, DriverB driver){
         super(brand, model, engineVolume, driver);
+        this.carEnum = carEnum;
     }
     @Override
     public void startMove(){

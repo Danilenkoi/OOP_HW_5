@@ -3,8 +3,10 @@ import transport.BusEnum;
 public class Bus extends Transport<DriverD> {
 
     private BusEnum busEnum;
+
     public Bus (String brand, String model, double engineVolume, DriverD driver){
         super(brand, model, engineVolume, driver);
+        this.busEnum = busEnum;
     }
 
     @Override
@@ -52,7 +54,7 @@ public class Bus extends Transport<DriverD> {
         return busEnum;
     }
 
-    public void setPassengerCapacity(BusEnum busEnum) {
+    public void setBusEnum(BusEnum busEnum) {
         this.busEnum = busEnum;
     }
 }
