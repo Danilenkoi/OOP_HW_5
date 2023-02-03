@@ -41,9 +41,18 @@ public abstract class Transport <T extends Driver> implements Competing {
         return engineVolume;
     }
 
+
     public abstract void startMove();
 
     public abstract void finishMove();
+
+    public static boolean getDiagnostic(){
+        System.out.println("Пройти диагностику!");
+        return false;
+    }
+    public abstract boolean goDiagnostics() throws TransportTypeException;
+
+
 
     public String toString() {
         return '\n' + brand + " " + model + '\n' + "\t engine capacity - " + engineVolume + ".";
@@ -51,4 +60,6 @@ public abstract class Transport <T extends Driver> implements Competing {
     }
 
     public abstract void printType();
+
+
 }

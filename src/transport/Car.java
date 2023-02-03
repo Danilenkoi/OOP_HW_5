@@ -8,6 +8,11 @@ public class Car extends Transport<DriverB> {
         super(brand, model, engineVolume, driver);
         this.carEnum = carEnum;
     }
+
+    @Override
+    public boolean goDiagnostics(){
+        return getDiagnostic();
+    }
     @Override
     public void startMove(){
         System.out.println("Автомобиль - " + getBrand() + " начал движение");

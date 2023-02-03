@@ -23,6 +23,9 @@ public class Main {
             printInfo(car);
             printInfo(trucks);
             printInfo(bus);
+            Trucks.getDiagnostic();
+            Car.getDiagnostic();
+            bus.goDiagnostics();
         }
     }
     private static void printInfo (Transport<?> transport){

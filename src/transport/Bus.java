@@ -1,5 +1,5 @@
 package transport;
-import transport.BusEnum;
+
 public class Bus extends Transport<DriverD> {
 
     private BusEnum busEnum;
@@ -8,6 +8,13 @@ public class Bus extends Transport<DriverD> {
         super(brand, model, engineVolume, driver);
         this.busEnum = busEnum;
     }
+
+    @Override
+    public boolean goDiagnostics() {
+        throw new TransportTypeException("Автобусы диагностику проходить не должны!");
+
+    }
+
 
     @Override
     public void startMove(){

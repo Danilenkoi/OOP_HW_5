@@ -1,5 +1,5 @@
 package transport;
-import transport.TrucksEnum;
+
 public class Trucks extends Transport<DriverC> {
 
     private TrucksEnum trucksEnum;
@@ -9,6 +9,10 @@ public class Trucks extends Transport<DriverC> {
         this.trucksEnum = trucksEnum;
     }
 
+    @Override
+    public boolean goDiagnostics(){
+        return getDiagnostic();
+    }
     @Override
     public void startMove(){
         System.out.println("Грузовик - " + getBrand() + " начал движение");
