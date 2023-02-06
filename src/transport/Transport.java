@@ -6,8 +6,9 @@ public abstract class Transport <T extends Driver> implements Competing {
     private final String model;
     private double engineVolume;
     private T driver;
+    private Mechanic mechanic;
 
-    public Transport(String brand, String model, double engineVolume, T driver) {
+    public Transport(String brand, String model, double engineVolume, T driver, Mechanic mechanic) {
 
         if (brand == null || brand.isEmpty()){
             brand = "noname";
@@ -19,12 +20,16 @@ public abstract class Transport <T extends Driver> implements Competing {
         this.model = model;
         setEngineVolume(engineVolume);
         setDriver(driver);
+        setMechanic(mechanic);
     }
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = (engineVolume <= 0) ? 3.0 : engineVolume;
     }
     public void setDriver(T driver){
         this.driver = driver;
+    }
+    public void setMechanic(Mechanic mechanic){
+        this.mechanic = mechanic;
     }
 
     public String getBrand() {
@@ -36,9 +41,11 @@ public abstract class Transport <T extends Driver> implements Competing {
     public T getDriver(){
         return driver;
     }
-
     public double getEngineVolume() {
         return engineVolume;
+    }
+    public Mechanic getMechanic(){
+        return mechanic;
     }
 
 
@@ -50,7 +57,7 @@ public abstract class Transport <T extends Driver> implements Competing {
         System.out.println("Пройти диагностику!");
         return false;
     }
-    public abstract boolean goDiagnostics() throws TransportTypeException;
+    public abstract void goDiagnostics();
 
 
 

@@ -4,16 +4,12 @@ public class Bus extends Transport<DriverD> {
 
     private BusEnum busEnum;
 
-    public Bus (String brand, String model, double engineVolume, DriverD driver, BusEnum busEnum){
-        super(brand, model, engineVolume, driver);
+    public Bus (String brand, String model, double engineVolume, DriverD driver, BusEnum busEnum, Mechanic mechanic){
+        super(brand, model, engineVolume, driver, mechanic);
         this.busEnum = busEnum;
     }
 
-    @Override
-    public boolean goDiagnostics() {
-        throw new TransportTypeException("Автобусы диагностику проходить не должны!");
 
-    }
 
 
     @Override
@@ -64,5 +60,14 @@ public class Bus extends Transport<DriverD> {
     public void setBusEnum(BusEnum busEnum) {
         this.busEnum = busEnum;
     }
+    @Override
+    public void goDiagnostics() {
+        try{
+            throw new TransportTypeException("Этот вид транспортного средства диагностику проходить не должен!");
+        } catch (TransportTypeException e){
+            System.err.println(e.getMessage());
+        }
+    }
 }
+
 

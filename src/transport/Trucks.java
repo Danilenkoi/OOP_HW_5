@@ -4,15 +4,15 @@ public class Trucks extends Transport<DriverC> {
 
     private TrucksEnum trucksEnum;
 
-    public Trucks (String brand, String model, double engineVolume, DriverC driver, TrucksEnum trucksEnum) {
-        super(brand, model, engineVolume, driver);
+    public Trucks (String brand, String model, double engineVolume, DriverC driver, TrucksEnum trucksEnum, Mechanic mechanic) {
+        super(brand, model, engineVolume, driver, mechanic);
         this.trucksEnum = trucksEnum;
     }
-
     @Override
-    public boolean goDiagnostics(){
-        return getDiagnostic();
+    public void goDiagnostics() {
+        System.out.println("Грузовики проходят диагностику");
     }
+
     @Override
     public void startMove(){
         System.out.println("Грузовик - " + getBrand() + " начал движение");

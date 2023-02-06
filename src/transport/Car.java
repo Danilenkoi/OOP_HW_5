@@ -4,15 +4,16 @@ public class Car extends Transport<DriverB> {
 
     private CarEnum carEnum;
 
-    public Car (String brand, String model, double engineVolume, DriverB driver, CarEnum carEnum){
-        super(brand, model, engineVolume, driver);
+    public Car (String brand, String model, double engineVolume, DriverB driver, CarEnum carEnum, Mechanic mechanic){
+        super(brand, model, engineVolume, driver, mechanic);
         this.carEnum = carEnum;
     }
 
     @Override
-    public boolean goDiagnostics(){
-        return getDiagnostic();
+    public void goDiagnostics() {
+        System.out.println("Машины проходят диагностику");
     }
+
     @Override
     public void startMove(){
         System.out.println("Автомобиль - " + getBrand() + " начал движение");
@@ -59,5 +60,6 @@ public class Car extends Transport<DriverB> {
     public void setCarEnum(CarEnum carEnum) {
         this.carEnum = carEnum;
     }
+
 }
 
