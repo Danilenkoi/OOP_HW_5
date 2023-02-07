@@ -7,6 +7,8 @@ import transport.Bus;
 import transport.Trucks;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -74,6 +76,16 @@ public class Main {
         racers.add(truck2);
         for (Transport transport : racers){
             System.out.println(transport + " " + transport.getDriver() + " " + transport.getMechanic());
+        }
+
+        Map<String, String> mechanicsAndCar = new HashMap<>();
+
+        mechanicsAndCar.put("BMW", "Пертов");
+        mechanicsAndCar.put("Електробус", "Иванов");
+        mechanicsAndCar.put("Scania", "Сидоров");
+
+        for (Map.Entry<String, String> contact: mechanicsAndCar.entrySet()) {
+            System.out.println("Марка: " + contact.getKey() + ", механик: " + contact.getValue());
         }
     }
     private static void printInfo (Transport<?> transport){
