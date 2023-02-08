@@ -13,28 +13,46 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
 
-        for (int i = 1; i <= 4; i++){
+        for (int i = 1; i <= 3; i++){
+
+            Mechanic mechanic3 = new Mechanic("Петров","Yandex");
+            Mechanic mechanic4 = new Mechanic("Иванов","Петрович");
+            Mechanic mechanic5 = new Mechanic("Сидоров","Московский транспорт");
+
+            List<Mechanic> mechanics = new ArrayList<>();
+            mechanics.add(mechanic3);
+            mechanics.add(mechanic4);
+            mechanics.add(mechanic5);
 
             DriverB driverB = new DriverB("Driver cat.B № " + i, true, 5 + i);
             Car car = new Car("Car brand №" + i, "Car model №" + i, 1.6, driverB, CarEnum.SEDAN,
-                    new Mechanic("Петров","Yandex"));
+                    mechanics);
 
             DriverC driverC = new DriverC("Driver cat.C № " + i, true, 7 + i);
             Trucks trucks = new Trucks("Truck brand №" + i, "Truck model №" + i, 2.4, driverC,
-                    TrucksEnum.N1, new Mechanic("Иванов","Петрович"));
+                    TrucksEnum.N1, mechanics);
 
             DriverD driverD = new DriverD("Driver cat.D № " + i, true, 10 + i);
             Bus bus = new Bus ("Bus brand " + i, "Bus model " + i, 4, driverD, BusEnum.MEDIUM,
-                    new Mechanic("Сидоров","Московский транспорт"));
+                    mechanics);
 
             printInfo(car);
             printInfo(trucks);
             printInfo(bus);
-            trucks.goDiagnostics();
-            car.goDiagnostics();
-            //bus.goDiagnostics();
+            car.toString();
             try {
-                throw new TransportTypeException("Этот вид транспортного средства диагностику проходить не должен!");
+                trucks.goDiagnostics();
+            } catch (TransportTypeException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                car.goDiagnostics();
+            } catch (TransportTypeException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                bus.goDiagnostics();
+                trucks.goDiagnostics();
             } catch (TransportTypeException e) {
                 System.err.println(e.getMessage());
             }
@@ -53,18 +71,26 @@ public class Main {
         Mechanic mechanic2 = new Mechanic("Иванов","Петрович");
         Mechanic mechanic3 = new Mechanic("Сидоров","Московский транспорт");
 
+        List<Mechanic> mechanics = new ArrayList<>();
+        mechanics.add(mechanic1);
+        mechanics.add(mechanic2);
+        mechanics.add(mechanic3);
+        for (Mechanic mechanic : mechanics){
+            System.out.println(mechanic);
+        }
+
         Transport bus1 = new Bus("bus1","bus1",6.0, driverD1, BusEnum.MEDIUM,
-                mechanic1);
+                mechanics);
         Transport bus2 = new Bus("bus2","bus2",7.4, driverD2, BusEnum.LARGE,
-                mechanic1);
+                mechanics);
         Transport сar1 = new Car("car1","car1",3.5, driverB1, CarEnum.CROSSOVER,
-                mechanic2);
+                mechanics);
         Transport car2 = new Car("car2","car2",2.6, driverB2, CarEnum.SEDAN,
-                mechanic2);
+                mechanics);
         Transport truck1 = new Trucks("truck1","truck1",6.0, driverC1, TrucksEnum.N2,
-                mechanic3);
+                mechanics);
         Transport truck2 = new Trucks("truck2","truck2",5.8, driverC2, TrucksEnum.N1,
-                mechanic3);
+                mechanics);
 
 
         List <Transport> racers = new ArrayList<>();
@@ -78,15 +104,18 @@ public class Main {
             System.out.println(transport + " " + transport.getDriver() + " " + transport.getMechanic());
         }
 
-        Map<String, String> mechanicsAndCar = new HashMap<>();
 
-        mechanicsAndCar.put("BMW", "Пертов");
-        mechanicsAndCar.put("Електробус", "Иванов");
-        mechanicsAndCar.put("Scania", "Сидоров");
+        Map<Transport, List<Mechanic>> mechanicsAndCar = new HashMap<>();
 
-        for (Map.Entry<String, String> contact: mechanicsAndCar.entrySet()) {
-            System.out.println("Марка: " + contact.getKey() + ", механик: " + contact.getValue());
+
+        mechanicsAndCar.put(сar1, mechanics);
+        mechanicsAndCar.put(car2, mechanics);
+        System.out.println(mechanicsAndCar);
+
+        for (Map.Entry<Transport,List<Mechanic>> entry : mechanicsAndCar.entrySet()){
+            System.out.println("Ключ : " + entry.getKey() + " Значение : " + entry.getValue());
         }
+
     }
     private static void printInfo (Transport<?> transport){
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand()

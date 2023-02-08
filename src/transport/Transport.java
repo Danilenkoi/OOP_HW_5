@@ -1,4 +1,6 @@
 package transport;
+import java.util.List;
+import java.util.Objects;
 
 public abstract class Transport <T extends Driver> implements Competing {
 
@@ -6,9 +8,9 @@ public abstract class Transport <T extends Driver> implements Competing {
     private final String model;
     private double engineVolume;
     private T driver;
-    private Mechanic mechanic;
+    private List <Mechanic> mechanic;
 
-    public Transport(String brand, String model, double engineVolume, T driver, Mechanic mechanic) {
+    public Transport(String brand, String model, double engineVolume, T driver, List<Mechanic> mechanic) {
 
         if (brand == null || brand.isEmpty()){
             brand = "noname";
@@ -28,9 +30,6 @@ public abstract class Transport <T extends Driver> implements Competing {
     public void setDriver(T driver){
         this.driver = driver;
     }
-    public void setMechanic(Mechanic mechanic){
-        this.mechanic = mechanic;
-    }
 
     public String getBrand() {
         return brand;
@@ -44,8 +43,13 @@ public abstract class Transport <T extends Driver> implements Competing {
     public double getEngineVolume() {
         return engineVolume;
     }
-    public Mechanic getMechanic(){
+
+    public List<Mechanic> getMechanic() {
         return mechanic;
+    }
+
+    public void setMechanic(List<Mechanic> mechanic) {
+        this.mechanic = mechanic;
     }
 
 
