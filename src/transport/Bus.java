@@ -1,0 +1,75 @@
+package transport;
+
+import java.util.List;
+
+public class Bus extends Transport<DriverD> {
+
+    private BusEnum busEnum;
+
+    public Bus (String brand, String model, double engineVolume, DriverD driver, BusEnum busEnum, List<Mechanic> mechanic){
+        super(brand, model, engineVolume, driver, mechanic);
+        this.busEnum = busEnum;
+    }
+
+
+
+
+    @Override
+    public void startMove(){
+        System.out.println("Автобус - " + getBrand() + " начал движение");
+    }
+    @Override
+    public void finishMove(){
+        System.out.println("Автобус - " + getBrand() + " закончил движение");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("пит-стоп");
+    }
+
+    @Override
+    public void theBestLepTime(){
+        int minBound = 100;
+        int maxBound = 180;
+        int theBestLep = (int)(minBound + (maxBound - minBound) * Math.random());
+        System.out.println("лучший круг! " + theBestLep);
+    }
+
+    @Override
+    public void maxSpeed() {
+        int minBound = 60;
+        int maxBound = 100;
+        int theBestSpeed = (int)(minBound + (maxBound - minBound) * Math.random());
+        System.out.println("максимальная скорость " + theBestSpeed);
+    }
+
+
+    @Override
+    public String toString() {
+        return super.toString() + (busEnum == null ? ". Passenger capacity: No data" : ". " + busEnum);
+    }
+
+    @Override
+    public void printType() {
+        System.out.println(busEnum == null ? "Passenger capacity: No data" : busEnum);
+    }
+
+    public BusEnum getBusEnum() {
+        return busEnum;
+    }
+
+    public void setBusEnum(BusEnum busEnum) {
+        this.busEnum = busEnum;
+    }
+    @Override
+    public void goDiagnostics() {
+        try{
+            throw new TransportTypeException("Этот вид транспортного средства диагностику проходить не должен!");
+        } catch (TransportTypeException e){
+            System.err.println(e.getMessage());
+        }
+    }
+}
+
+
