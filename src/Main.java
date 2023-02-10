@@ -5,10 +5,8 @@ import transport.TrucksEnum;
 import transport.Car;
 import transport.Bus;
 import transport.Trucks;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -115,6 +113,30 @@ public class Main {
         for (Map.Entry<Transport,List<Mechanic>> entry : mechanicsAndCar.entrySet()){
             System.out.println("Ключ : " + entry.getKey() + " Значение : " + entry.getValue());
         }
+
+        Set <String> driverNames = new HashSet<>();
+
+        driverNames.add("Захаров И.В.");
+        driverNames.add("Чернов И.Е.");
+        driverNames.add("Кузьмин Д.И.");
+        driverNames.add("Королев С.К.");
+        driverNames.add("Шубин В.Д.");
+        driverNames.add("Жарков В.А.");
+
+        System.out.println(driverNames);
+
+        if (driverNames.contains("Захаров И.В.") || driverNames.contains("Чернов И.Е.") ||driverNames.contains("Кузьмин Д.И.") ||
+                driverNames.contains("Королев С.К.") ||driverNames.contains("Шубин В.Д.") ||driverNames.contains("Жарков В.А.")){
+            System.err.println("Данный водитель уже зарегистрирован!");
+        }
+        driverNames.add("Жарков В.А.");
+
+        Iterator <String> iterDriver = driverNames.iterator();
+
+        while (iterDriver.hasNext()){
+            System.out.println(iterDriver.next());
+        }
+
 
     }
     private static void printInfo (Transport<?> transport){
